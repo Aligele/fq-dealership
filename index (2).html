@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FQ Dealership – Sell Your Car</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--navy:#0E2038;--ink:#0B1626;--orange:#F0782A;--dk-orange:#B34A0C;--mut:#44546F;--line:#C9D2E0;--bg:#F4F6FA}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;margin:0;text-transform:uppercase}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.topbar{background:var(--ink);color:#E6ECF5;font-size:14px;padding:10px 20px;text-align:center}
+.topbar b{color:var(--orange);letter-spacing:.06em;margin-left:14px}
+header.site{background:var(--navy);border-bottom:1px solid #1E3354}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;cursor:pointer;background:none;border:0;padding:0;font:inherit;text-align:left}
+.logo{width:44px;height:44px;border-radius:12px;background:var(--orange);color:var(--ink);display:flex;align-items:center;justify-content:center;font:700 24px 'Barlow Condensed',sans-serif;flex:none}
+.brand .n{font:700 21px/1.1 'Barlow Condensed',sans-serif;letter-spacing:.03em;display:block}
+.brand .t{font-size:10.5px;letter-spacing:.2em;color:#F0A468;font-weight:600;display:block}
+nav.site{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:10px;border:0;background:var(--orange);color:var(--ink);font:600 16px Inter,sans-serif;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.05)}
+.btn:focus-visible,.fld:focus,.chip:focus-visible,.link:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid #3A5078}
+.btn.light{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn.sm{height:38px;padding:0 14px;font-size:14px}
+.btn.green{background:#157A4A;color:#fff}.btn.red{background:#B3261E;color:#fff}.btn.amber{background:#FFD9B8}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.hero{background:linear-gradient(180deg,var(--navy),var(--ink));color:#fff;padding:clamp(36px,7vw,84px) 0 clamp(40px,6vw,72px)}
+.eyebrow{font-size:13px;letter-spacing:.22em;font-weight:600;color:var(--orange)}
+.hero h1{font-size:clamp(44px,8vw,84px);line-height:1;margin:14px 0}
+.hero p{font-size:clamp(17px,2.2vw,20px);line-height:1.6;color:#B7C3D6;max-width:720px;margin:0 0 24px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.perks{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.perk{flex:1 1 220px;display:flex;gap:12px;padding:16px;border:1px solid #1E3354;border-radius:14px;background:var(--navy)}
+.perk svg{flex:none}.perk b{display:block;font-size:16px}.perk span{font-size:14px;color:#B7C3D6}
+section.pad{padding:clamp(44px,7vw,80px) 0}
+.sub{color:var(--mut);font-size:18px;line-height:1.6}
+.dk{color:var(--dk-orange)}
+.steps{display:flex;flex-wrap:wrap;gap:20px;margin-top:28px}
+.step{flex:1 1 230px;background:#fff;border-radius:16px;padding:26px;box-shadow:0 1px 3px rgba(11,22,38,.08)}
+.step .h{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.num{width:38px;height:38px;border-radius:10px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font:700 21px 'Barlow Condensed',sans-serif}
+.step h3{font-size:23px}.step p{margin:0;color:var(--mut);line-height:1.6}
+.formsec{background:var(--navy);color:#fff}
+.cols{display:flex;flex-wrap:wrap;gap:40px 60px;align-items:flex-start}
+.card{background:#fff;color:var(--ink);border-radius:20px;padding:clamp(20px,4vw,36px)}
+.fld{width:100%;height:52px;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px}
+textarea.fld{height:100px;padding:12px 14px;resize:vertical}
+label.l{display:block;font-size:14px;font-weight:600;margin:0 0 6px;color:#1B2B45}
+.opt{font-weight:400;color:#6B7A93}
+.g{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:14px}.g>div{flex:1 1 180px;min-width:0}
+.sect{font-size:13px;letter-spacing:.16em;font-weight:700;color:var(--dk-orange);margin:22px 0 12px;display:block}
+.drop{border:2px dashed #B9C4D6;border-radius:14px;background:var(--bg);padding:20px;text-align:center}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;justify-content:center}
+.thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+.msg{padding:12px 14px;border-radius:10px;font-size:15px;line-height:1.5;margin:12px 0}
+.msg.err{background:#FDECEA;color:#8A1C14}.msg.ok{background:#E3F4EA;color:#0F5B36}.msg.info{background:#EAF0FA;color:#1B2B45}
+.ref{font:700 34px 'Barlow Condensed',sans-serif;letter-spacing:.12em;background:var(--bg);padding:10px 18px;border-radius:10px;display:inline-block;margin:8px 0}
+footer.site{background:var(--ink);color:#B7C3D6;padding:32px 0;font-size:15px;line-height:1.7}
+footer.site b{color:#fff}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12.5px;font-weight:700}
+.b-pending{background:#FFF1D6;color:#7A4B00}.b-approved{background:#DDF3E6;color:#0F5B36}.b-rejected{background:#FBE0DD;color:#8A1C14}.b-info_needed{background:#E1EAFB;color:#1D3F8A}
+/* admin */
+.adm{padding:24px 0 60px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font:600 14px Inter,sans-serif;cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.list{display:flex;flex-direction:column;gap:10px}
+.item{background:#fff;border-radius:14px;padding:16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;cursor:pointer;border:1.5px solid transparent;width:100%;text-align:left;font:inherit;color:inherit}
+.item:hover{border-color:var(--navy)}
+.item .t{font-weight:600;font-size:17px}.item .s{font-size:14px;color:var(--mut)}
+.detail{background:#fff;border-radius:16px;padding:clamp(16px,3vw,28px);margin-top:14px;border:2px solid var(--navy)}
+.photos{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 4px}
+.photos img{width:140px;height:105px;object-fit:cover;border-radius:10px;cursor:zoom-in}
+.decide{background:var(--bg);border-radius:14px;padding:16px;margin-top:16px}
+.tbl{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;font-size:14.5px}
+.tbl th,.tbl td{padding:10px 12px;text-align:left;border-bottom:1px solid #E6EBF3;vertical-align:middle}
+.tbl th{background:#EEF2F8;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.scroll{overflow-x:auto}
+.link{background:none;border:0;color:var(--dk-orange);font:600 14px Inter;cursor:pointer;text-decoration:underline;padding:0}
+.hide{display:none!important}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+.lb img{max-width:100%;max-height:100%;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="topbar">Mon–Sat, 9am–7pm <b>CASH DEALS WELCOME</b></div>
+<header class="site"><div class="wrap">
+<button class="brand" data-go=""><span class="logo">FQ</span><span><span class="n">FQ DEALERSHIP</span><span class="t">QUALITY USED CARS</span></span></button>
+<nav class="site" id="nav"></nav>
+</div></header>
+<main id="app"></main>
+<footer class="site"><div class="wrap" style="display:flex;flex-wrap:wrap;gap:16px 48px;justify-content:space-between">
+<div><b>FQ DEALERSHIP</b><br>Quality used cars</div>
+<div><b>Visit us</b><br>[YOUR ADDRESS]<br>Mon–Sat, 9am–7pm</div>
+<div><b>Contact</b><br>Phone: [YOUR PHONE]<br>WhatsApp: [YOUR WHATSAPP]</div>
+<div><button class="link" data-go="admin" style="color:#B7C3D6">Staff login</button></div>
+</div></footer>
+<div id="lb" class="lb hide"><img alt=""></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SB_URL='https://enpwvgtgavtfnbhapdcf.supabase.co';
+const SB_KEY='sb_publishable_qzFzLY-ZddliZZtEfRiUiA_lAdUcrq7';
+const sb=supabase.createClient(SB_URL,SB_KEY);
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LBL={pending:'Pending',approved:'Approved',rejected:'Rejected',info_needed:'Info needed'};
+const badge=s=>`<span class="badge b-${esc(s)}">${esc(LBL[s]||s)}</span>`;
+const kes=n=>n==null||n===''?'—':'KES '+Number(n).toLocaleString('en-KE');
+const when=t=>new Date(t).toLocaleString('en-KE',{dateStyle:'medium',timeStyle:'short'});
+const ico={cash:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>',shield:'<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3z"/><path d="M9 12l2.2 2.2L15 10.4"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>'};
+const svg=k=>`<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F0782A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ico[k]}</svg>`;
+
+/* ---------- routing ---------- */
+const app=$('#app');
+function go(r){location.hash=r?'#'+r:'#';route();window.scrollTo(0,0)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b){e.preventDefault();go(b.dataset.go)}const sc=e.target.closest('[data-scroll]');if(sc){e.preventDefault();const el=document.getElementById(sc.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth'})}});
+window.addEventListener('hashchange',route);
+function route(){const h=location.hash.replace('#','');
+  $('#nav').innerHTML=`<button class="btn sm ghost" data-go="status">Check my offer</button>`;
+  if(h==='status')return viewStatus();
+  if(h==='admin')return viewAdmin();
+  viewHome();}
+
+/* ---------- public home ---------- */
+function viewHome(){
+app.innerHTML=`
+<section class="hero"><div class="wrap">
+<span class="eyebrow">WE BUY CARS</span>
+<h1>SELL YOUR CAR IN ONE VISIT</h1>
+<p>Tell us about your vehicle and send a few photos. We come back with a fair, no-obligation offer. Bring it in, we inspect it, and you get paid the same day.</p>
+<div class="row"><button class="btn" data-scroll="sell-form" style="height:54px;padding:0 28px;font-size:17px">Get my offer</button><button class="btn ghost" data-scroll="how" style="height:54px;padding:0 28px;font-size:17px">How it works</button></div>
+<div class="perks">
+<div class="perk">${svg('cash')}<div><b>Fair cash offers</b><span>Any make or model</span></div></div>
+<div class="perk">${svg('shield')}<div><b>Any condition</b><span>Running or not</span></div></div>
+<div class="perk">${svg('clock')}<div><b>Paid same day</b><span>No waiting around</span></div></div>
+<div class="perk">${svg('lock')}<div><b>No obligation</b><span>No pressure</span></div></div>
+</div></div></section>
+<section class="pad" id="how"><div class="wrap">
+<span class="eyebrow dk">SIMPLE &amp; FAST</span><h2 style="font-size:clamp(36px,5vw,52px);margin:10px 0">HOW SELLING WORKS</h2>
+<p class="sub" style="margin:0">From telling us about your car to cash in hand, usually within a day or two.</p>
+<div class="steps">
+<div class="step"><div class="h"><span class="num">1</span><h3>Tell us about it</h3></div><p>Fill out the form below with your vehicle's details and a few photos. It takes about three minutes.</p></div>
+<div class="step"><div class="h"><span class="num">2</span><h3>Get an offer</h3></div><p>Our reviewer checks the details and photos, then approves your car and sends an offer, usually within a day.</p></div>
+<div class="step"><div class="h"><span class="num">3</span><h3>Bring it in</h3></div><p>Visit us and we inspect the car so the offer can be confirmed.</p></div>
+<div class="step"><div class="h"><span class="num">4</span><h3>Get paid</h3></div><p>Sign the paperwork and walk away with payment the same day. No waiting on a cheque.</p></div>
+</div></div></section>
+<section class="pad formsec" id="sell-form"><div class="wrap"><div class="cols">
+<div style="flex:1 1 300px"><span class="eyebrow">SELL TO US</span><h2 style="font-size:clamp(36px,5vw,52px);margin:10px 0 16px">GET A REAL OFFER ON YOUR CAR</h2>
+<p style="color:#B7C3D6;font-size:18px;line-height:1.6;margin:0 0 20px">No obligation, no pressure. The more details and photos you share, the more accurate our offer will be.</p>
+<p style="color:#B7C3D6;line-height:1.6">Already sent your car? <button class="link" data-go="status" style="color:#F0A468">Check your offer status</button></p></div>
+<div class="card" style="flex:1.2 1 340px;min-width:0" id="formcard"></div>
+</div></div></section>`;
+formView();}
+
+function formView(){
+const c=$('#formcard');
+c.innerHTML=`<h3 style="font-size:32px">Sell your car</h3>
+<p style="margin:6px 0 0;font-size:14px;color:var(--mut)">We'll never share your details. Required fields are marked *.</p>
+<form id="f" novalidate>
+<span class="sect">VEHICLE DETAILS</span>
+<div class="g"><div><label class="l" for="year">Year *</label><input class="fld" id="year" inputmode="numeric" maxlength="4" placeholder="e.g. 2019"></div>
+<div><label class="l" for="make">Make *</label><input class="fld" id="make" placeholder="e.g. Toyota"></div></div>
+<div class="g"><div><label class="l" for="model">Model *</label><input class="fld" id="model" placeholder="e.g. Corolla"></div>
+<div><label class="l" for="trim">Trim <span class="opt">(optional)</span></label><input class="fld" id="trim" placeholder="e.g. XLi"></div></div>
+<div class="g"><div><label class="l" for="mileage">Mileage (km) *</label><input class="fld" id="mileage" inputmode="numeric" placeholder="e.g. 84,000"></div>
+<div><label class="l" for="condition">Condition *</label><select class="fld" id="condition"><option value="">Select condition</option><option>Excellent</option><option>Good</option><option>Fair</option><option>Needs work</option><option>Not running</option></select></div></div>
+<div class="g"><div><label class="l" for="vin">VIN <span class="opt">(optional)</span></label><input class="fld" id="vin" placeholder="17-character VIN"></div></div>
+<span class="sect">PHOTOS</span>
+<div class="drop"><input type="file" id="photos" accept="image/jpeg,image/png,image/webp" multiple style="max-width:100%"><p style="margin:10px 0 0;font-size:14px;color:var(--mut)">Add exterior, interior and odometer shots (up to 8 photos, 5 MB each, JPG/PNG/WebP).</p><div class="thumbs" id="thumbs"></div></div>
+<span class="sect">YOUR INFO</span>
+<div class="g"><div><label class="l" for="seller_name">Full name *</label><input class="fld" id="seller_name" autocomplete="name" placeholder="Your name"></div></div>
+<div class="g"><div><label class="l" for="phone">Phone *</label><input class="fld" id="phone" type="tel" autocomplete="tel" placeholder="+254 7XX XXX XXX"></div>
+<div><label class="l" for="email">Email *</label><input class="fld" id="email" type="email" autocomplete="email" placeholder="you@example.com"></div></div>
+<div class="g"><div><label class="l" for="notes">Anything else we should know? <span class="opt">(optional)</span></label><textarea class="fld" id="notes" placeholder="Accident history, recent repairs, reason for selling, your asking price…"></textarea></div></div>
+<div id="ferr"></div>
+<button class="btn" id="fsend" type="submit" style="width:100%;height:56px;font-size:17px">Request my offer</button>
+<p style="margin:12px 0 0;font-size:13px;color:#6B7A93;text-align:center">No obligation. We'll contact you with an offer, usually within a day.</p>
+</form>`;
+let files=[];
+$('#photos').addEventListener('change',e=>{
+  files=[...e.target.files].slice(0,8);
+  const th=$('#thumbs');th.innerHTML='';
+  files.forEach(f=>{const i=document.createElement('img');i.alt='';i.src=URL.createObjectURL(f);th.appendChild(i)});});
+$('#f').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const v=id=>$('#'+id).value.trim();
+  const err=m=>{$('#ferr').innerHTML=`<div class="msg err" role="alert">${esc(m)}</div>`};
+  const year=parseInt(v('year'),10),mileage=parseInt(v('mileage').replace(/[^\d]/g,''),10);
+  if(!(year>=1950&&year<=new Date().getFullYear()+1))return err('Enter a valid 4-digit year.');
+  if(!v('make')||!v('model'))return err('Make and model are required.');
+  if(!(mileage>=0))return err('Enter the mileage in km.');
+  if(!v('condition'))return err('Select the car condition.');
+  if(!v('seller_name'))return err('Enter your name.');
+  if(v('phone').replace(/\D/g,'').length<7)return err('Enter a valid phone number.');
+  if(!/^\S+@\S+\.\S+$/.test(v('email')))return err('Enter a valid email address.');
+  for(const f of files){if(!['image/jpeg','image/png','image/webp'].includes(f.type))return err('Photos must be JPG, PNG or WebP.');if(f.size>5*1024*1024)return err(`"${f.name}" is over 5 MB.`)}
+  const btn=$('#fsend');btn.disabled=true;btn.textContent='Sending…';$('#ferr').innerHTML='';
+  try{
+    const id=crypto.randomUUID(),paths=[];
+    for(let i=0;i<files.length;i++){
+      const ext=({'image/jpeg':'jpg','image/png':'png','image/webp':'webp'})[files[i].type];
+      const p=`${id}/${i+1}.${ext}`;
+      const {error}=await sb.storage.from('fq-photos').upload(p,files[i],{contentType:files[i].type});
+      if(error)throw error;paths.push(p);}
+    const {data,error}=await sb.rpc('fq_submit',{p:{id,year,make:v('make'),model:v('model'),trim:v('trim'),mileage,condition:v('condition'),vin:v('vin'),seller_name:v('seller_name'),phone:v('phone'),email:v('email'),notes:v('notes'),photo_paths:paths}});
+    if(error)throw error;
+    $('#formcard').innerHTML=`<h3 style="font-size:32px">Request received</h3>
+<div class="msg ok">Thank you, ${esc(v('seller_name'))}. Our reviewer will check your car and get back to you, usually within a day.</div>
+<p style="margin:0">Your reference code:</p><div class="ref">${esc(data)}</div>
+<p style="color:var(--mut);line-height:1.6">Keep this code. Use it with your phone number to check your offer at any time.</p>
+<button class="btn" data-go="status">Check my offer</button>`;
+  }catch(ex){err('Could not send your request: '+(ex.message||'please try again.'));btn.disabled=false;btn.textContent='Request my offer'}
+});}
+
+/* ---------- seller status ---------- */
+function viewStatus(){
+app.innerHTML=`<section class="pad"><div class="wrap" style="max-width:560px">
+<span class="eyebrow dk">YOUR OFFER</span><h2 style="font-size:clamp(36px,5vw,48px);margin:8px 0 18px">CHECK YOUR OFFER STATUS</h2>
+<div class="card"><form id="sf" novalidate>
+<label class="l" for="sref">Reference code</label><input class="fld" id="sref" placeholder="e.g. 4F9A12BC" autocapitalize="characters" style="margin-bottom:14px">
+<label class="l" for="sphone">Phone number you used</label><input class="fld" id="sphone" type="tel" placeholder="+254 7XX XXX XXX" style="margin-bottom:16px">
+<button class="btn" type="submit" style="width:100%">Check status</button></form><div id="sres"></div></div></div></section>`;
+$('#sf').addEventListener('submit',async e=>{e.preventDefault();
+  const out=$('#sres');out.innerHTML='';
+  const {data,error}=await sb.rpc('fq_check_status',{p_ref:$('#sref').value,p_phone:$('#sphone').value});
+  if(error)return out.innerHTML=`<div class="msg err">${esc(error.message)}</div>`;
+  if(!data||!data.length)return out.innerHTML=`<div class="msg err">No match. Check the code and phone number.</div>`;
+  const r=data[0];
+  const txt={pending:'We are reviewing your car. Check back soon.',approved:'Your car is approved. Bring it in for inspection and payment.',rejected:'Sorry, we cannot make an offer on this car.',info_needed:'We need more information from you. Please see the note below or call us.'}[r.status];
+  out.innerHTML=`<div style="margin-top:18px"><p style="margin:0 0 6px;font-weight:600">${esc(r.car)}</p>${badge(r.status)}
+  <p style="line-height:1.6">${esc(txt)}</p>
+  ${r.offer_amount!=null?`<p style="margin:0">Offer</p><div class="ref">${esc(kes(r.offer_amount))}</div>`:''}
+  ${r.reviewer_note?`<div class="msg info"><b>Note from our reviewer:</b><br>${esc(r.reviewer_note)}</div>`:''}</div>`;});}
+
+/* ---------- admin ---------- */
+const A={me:null,subs:[],staff:[],events:[],tab:'subs',filter:'all',q:'',open:null,edit:false,confirmDel:false};
+async function viewAdmin(){
+  const {data:{session}}=await sb.auth.getSession();
+  if(!session){return adminLogin();}
+  $('#nav').innerHTML=`<button class="btn sm ghost" data-go="status">Check my offer</button><button class="btn sm ghost" id="out">Sign out</button>`;
+  $('#out').onclick=async()=>{await sb.auth.signOut();A.me=null;viewAdmin()};
+  app.innerHTML=`<div class="wrap adm"><p>Loading…</p></div>`;
+  let {data:me}=await sb.from('fq_staff').select('*').eq('user_id',session.user.id).maybeSingle();
+  if(!me){const ins=await sb.from('fq_staff').insert({user_id:session.user.id,email:session.user.email,role:'pending'}).select().maybeSingle();me=ins.data}
+  A.me=me;
+  if(!me||me.role==='pending')return adminPending(session);
+  await loadAll();adminShell();}
+function adminLogin(mode='in'){
+  app.innerHTML=`<section class="pad"><div class="wrap" style="max-width:440px"><span class="eyebrow dk">STAFF ONLY</span><h2 style="font-size:44px;margin:8px 0 18px">${mode==='in'?'REVIEWER LOGIN':'CREATE STAFF ACCOUNT'}</h2>
+<div class="card"><form id="lf" novalidate>
+<label class="l" for="le">Email</label><input class="fld" id="le" type="email" autocomplete="email" style="margin-bottom:14px">
+<label class="l" for="lp">Password</label><input class="fld" id="lp" type="password" autocomplete="${mode==='in'?'current-password':'new-password'}" style="margin-bottom:16px">
+<div id="lerr"></div><button class="btn" type="submit" style="width:100%">${mode==='in'?'Sign in':'Create account'}</button></form>
+<p style="margin:16px 0 0;font-size:14px;color:var(--mut)">${mode==='in'?'New staff member? <button class="link" id="sw">Create an account</button>':'Already have an account? <button class="link" id="sw">Sign in</button>'}</p></div></div></section>`;
+  $('#sw').onclick=()=>adminLogin(mode==='in'?'up':'in');
+  $('#lf').addEventListener('submit',async e=>{e.preventDefault();
+    const email=$('#le').value.trim(),password=$('#lp').value;const er=m=>$('#lerr').innerHTML=`<div class="msg err" role="alert">${esc(m)}</div>`;
+    if(!email||password.length<6)return er('Enter your email and a password of 6+ characters.');
+    if(mode==='in'){const {error}=await sb.auth.signInWithPassword({email,password});if(error)return er(error.message);return viewAdmin();}
+    const {data,error}=await sb.auth.signUp({email,password});if(error)return er(error.message);
+    if(!data.session)return $('#lerr').innerHTML=`<div class="msg ok">Account created. Check your email to confirm it, then sign in.</div>`;
+    viewAdmin();});}
+async function adminPending(session){
+  const {count}=await sb.rpc('fq_is_admin').then(r=>({count:r.data?1:0}));
+  app.innerHTML=`<section class="pad"><div class="wrap" style="max-width:520px"><h2 style="font-size:40px">WAITING FOR APPROVAL</h2>
+<div class="card" style="margin-top:16px"><div class="msg info">Signed in as ${esc(session.user.email)}. An admin must approve your account before you can see submissions.</div>
+<p style="margin:18px 0 6px;font-weight:600">First time setting up?</p>
+<p style="margin:0 0 10px;color:var(--mut);font-size:14px;line-height:1.5">If you are the owner, enter the one-time setup code to become the admin.</p>
+<input class="fld" id="code" placeholder="Setup code" autocapitalize="characters" style="margin-bottom:12px"><div id="cerr"></div>
+<button class="btn" id="claim" style="width:100%">Become admin</button></div></div></section>`;
+  $('#claim').onclick=async()=>{const {data,error}=await sb.rpc('fq_claim_admin',{p_code:$('#code').value.trim().toUpperCase()});
+    if(error||!data)return $('#cerr').innerHTML=`<div class="msg err">Code not accepted, or an admin already exists.</div>`;viewAdmin();};}
+async function loadAll(){
+  const s=await sb.from('fq_submissions').select('*').order('created_at',{ascending:false});A.subs=s.data||[];
+  if(A.me.role==='admin'){const t=await sb.from('fq_staff').select('*').order('created_at');A.staff=t.data||[];}
+  const ev=await sb.from('fq_events').select('*').order('created_at',{ascending:false}).limit(100);A.events=ev.data||[];}
+function adminShell(){
+  const cnt=k=>k==='all'?A.subs.length:A.subs.filter(s=>s.status===k).length;
+  const pend=A.staff.filter(s=>s.role==='pending').length;
+  app.innerHTML=`<div class="wrap adm">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline"><h2 style="font-size:40px">Reviewer dashboard</h2><span style="color:var(--mut);font-size:14px">${esc(A.me.email)} · ${esc(A.me.role)}</span></div>
+<div class="tabs" role="tablist">
+<button class="chip ${A.tab==='subs'?'on':''}" data-tab="subs">Submissions (${A.subs.length})</button>
+${A.me.role==='admin'?`<button class="chip ${A.tab==='staff'?'on':''}" data-tab="staff">Staff${pend?` (${pend} waiting)`:''}</button>`:''}
+<button class="chip ${A.tab==='log'?'on':''}" data-tab="log">Activity</button></div>
+<div id="pane"></div></div>`;
+  app.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{A.tab=b.dataset.tab;A.open=null;adminShell()});
+  if(A.tab==='subs')paneSubs();else if(A.tab==='staff')paneStaff();else paneLog();}
+function paneSubs(){
+  const cnt=k=>k==='all'?A.subs.length:A.subs.filter(s=>s.status===k).length;
+  const q=A.q.toLowerCase();
+  const rows=A.subs.filter(s=>(A.filter==='all'||s.status===A.filter)&&(!q||[s.ref,s.make,s.model,s.seller_name,s.phone,s.email].join(' ').toLowerCase().includes(q)));
+  $('#pane').innerHTML=`<div class="tabs" style="margin-top:0">${['all','pending','info_needed','approved','rejected'].map(k=>`<button class="chip ${A.filter===k?'on':''}" data-f="${k}">${k==='all'?'All':LBL[k]} (${cnt(k)})</button>`).join('')}</div>
+<input class="fld" id="q" placeholder="Search name, phone, car or reference" value="${esc(A.q)}" style="margin-bottom:14px">
+<div class="list">${rows.map(s=>`<button class="item" data-open="${s.id}"><span><span class="t">${esc([s.year,s.make,s.model].join(' '))}</span><br><span class="s">${esc(s.seller_name)} · ${esc(s.phone)} · ${esc(when(s.created_at))}</span></span><span>${s.offer_amount!=null?`<b>${esc(kes(s.offer_amount))}</b> `:''}${badge(s.status)}</span></button>
+${A.open===s.id?`<div id="det"></div>`:''}`).join('')||'<p class="sub">No submissions here yet.</p>'}</div>`;
+  $('#pane').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{A.filter=b.dataset.f;A.open=null;paneSubs()});
+  $('#q').oninput=e=>{A.q=e.target.value;const p=e.target.selectionStart;paneSubs();const n=$('#q');n.focus();n.setSelectionRange(p,p)};
+  $('#pane').querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{A.open=A.open===b.dataset.open?null:b.dataset.open;A.edit=false;A.confirmDel=false;paneSubs()});
+  if(A.open)detail();}
+async function detail(){
+  const s=A.subs.find(x=>x.id===A.open);const box=$('#det');if(!s||!box)return;
+  const ed=A.edit;
+  const f=(k,l,t='text')=>ed?`<div><label class="l">${l}</label><input class="fld" data-k="${k}" type="${t}" value="${esc(s[k]??'')}"></div>`:`<div><span class="s" style="font-size:13px;color:var(--mut)">${l}</span><div style="font-weight:500">${esc(s[k]??'—')}</div></div>`;
+  box.innerHTML=`<div class="detail">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><div><b style="font-size:20px">${esc([s.year,s.make,s.model,s.trim].filter(Boolean).join(' '))}</b><br><span style="color:var(--mut);font-size:14px">Ref ${esc(s.ref)} · sent ${esc(when(s.created_at))}${s.reviewed_at?` · reviewed ${esc(when(s.reviewed_at))}`:''}</span></div>${badge(s.status)}</div>
+<div class="g" style="margin-top:16px">${f('year','Year')}${f('make','Make')}${f('model','Model')}${f('trim','Trim')}${f('mileage','Mileage (km)','number')}
+<div><label class="l">Condition</label>${ed?`<select class="fld" data-k="condition">${['Excellent','Good','Fair','Needs work','Not running'].map(c=>`<option ${s.condition===c?'selected':''}>${c}</option>`).join('')}</select>`:`<div style="font-weight:500">${esc(s.condition)}</div>`}</div>
+${f('vin','VIN')}${f('seller_name','Seller')}${f('phone','Phone')}${f('email','Email')}</div>
+<div style="margin-bottom:10px"><span style="font-size:13px;color:var(--mut)">Seller notes</span>${ed?`<textarea class="fld" data-k="notes">${esc(s.notes||'')}</textarea>`:`<div>${esc(s.notes||'—')}</div>`}</div>
+<span style="font-size:13px;color:var(--mut)">Photos (${s.photo_paths.length})</span><div class="photos" id="ph">${s.photo_paths.length?'Loading photos…':'<span style="color:var(--mut)">No photos sent.</span>'}</div>
+<div class="row" style="margin-top:8px">${ed?`<button class="btn sm" id="sv">Save changes</button><button class="btn sm light" id="cx">Cancel</button>`:`<button class="btn sm light" id="ed">Edit details</button>`}
+${A.confirmDel?`<button class="btn sm red" id="dy">Yes, delete permanently</button><button class="btn sm light" id="dn">Keep</button>`:`<button class="btn sm light" id="dl" style="color:#B3261E">Delete</button>`}</div>
+<div class="decide"><b>Decision</b>
+<div class="g" style="margin-top:10px"><div><label class="l" for="offer">Offer amount (KES)</label><input class="fld" id="offer" type="number" min="0" step="1000" value="${esc(s.offer_amount??'')}"></div></div>
+<label class="l" for="rnote">Note to seller <span class="opt">(shown when they check status)</span></label><textarea class="fld" id="rnote">${esc(s.reviewer_note||'')}</textarea>
+<div id="derr"></div>
+<div class="row" style="margin-top:12px"><button class="btn sm green" data-st="approved">Approve</button><button class="btn sm red" data-st="rejected">Reject</button><button class="btn sm amber" data-st="info_needed">Request more info</button><button class="btn sm light" data-st="pending">Back to pending</button></div></div></div>`;
+  box.querySelectorAll('[data-st]').forEach(b=>b.onclick=async()=>{
+    const st=b.dataset.st,off=$('#offer').value,note=$('#rnote').value.trim();
+    if(st==='approved'&&(off===''||Number(off)<=0))return $('#derr').innerHTML=`<div class="msg err">Enter an offer amount before approving.</div>`;
+    if((st==='rejected'||st==='info_needed')&&!note)return $('#derr').innerHTML=`<div class="msg err">Add a note so the seller knows why.</div>`;
+    await save(s.id,{status:st,offer_amount:off===''?null:Number(off),reviewer_note:note||null});});
+  const E=id=>box.querySelector('#'+id);
+  if(E('ed'))E('ed').onclick=()=>{A.edit=true;detail()};
+  if(E('cx'))E('cx').onclick=()=>{A.edit=false;detail()};
+  if(E('sv'))E('sv').onclick=async()=>{const u={};box.querySelectorAll('[data-k]').forEach(i=>{let v=i.value.trim();if(['year','mileage'].includes(i.dataset.k))v=v===''?null:Number(v);else if(v==='')v=null;u[i.dataset.k]=v});A.edit=false;await save(s.id,u)};
+  if(E('dl'))E('dl').onclick=()=>{A.confirmDel=true;detail()};
+  if(E('dn'))E('dn').onclick=()=>{A.confirmDel=false;detail()};
+  if(E('dy'))E('dy').onclick=async()=>{
+    if(s.photo_paths.length)await sb.storage.from('fq-photos').remove(s.photo_paths);
+    const {error}=await sb.from('fq_submissions').delete().eq('id',s.id);
+    if(error)return $('#derr').innerHTML=`<div class="msg err">${esc(error.message)}</div>`;
+    A.open=null;await loadAll();adminShell();};
+  if(s.photo_paths.length){const {data}=await sb.storage.from('fq-photos').createSignedUrls(s.photo_paths,3600);const ph=box.querySelector('#ph');
+    if(ph&&data){ph.innerHTML=data.filter(d=>d.signedUrl).map(d=>`<img src="${esc(d.signedUrl)}" alt="Car photo" data-big="${esc(d.signedUrl)}">`).join('');
+      ph.querySelectorAll('img').forEach(i=>i.onclick=()=>{const lb=$('#lb');lb.querySelector('img').src=i.dataset.big;lb.classList.remove('hide')})}}}
+$('#lb').onclick=()=>$('#lb').classList.add('hide');
+async function save(id,u){
+  const {error}=await sb.from('fq_submissions').update(u).eq('id',id);
+  if(error){const d=$('#derr');if(d)d.innerHTML=`<div class="msg err">${esc(error.message)}</div>`;return}
+  await loadAll();adminShell();}
+function paneStaff(){
+  $('#pane').innerHTML=`<p class="sub" style="font-size:15px;margin-top:0">New staff create an account on the Staff login page, then appear here as <b>pending</b>. Give them the reviewer role (can approve, reject and edit) or admin (also manages staff).</p>
+<div class="scroll"><table class="tbl"><thead><tr><th>Email</th><th>Role</th><th>Joined</th><th></th></tr></thead><tbody>${A.staff.map(s=>`<tr><td>${esc(s.email)}${s.user_id===A.me.user_id?' (you)':''}</td><td>${s.user_id===A.me.user_id?esc(s.role):`<select class="fld" style="height:38px;width:auto" data-role="${s.user_id}">${['pending','reviewer','admin'].map(r=>`<option ${s.role===r?'selected':''}>${r}</option>`).join('')}</select>`}</td><td>${esc(when(s.created_at))}</td><td>${s.user_id===A.me.user_id?'':`<button class="link" data-rm="${s.user_id}">Remove</button>`}</td></tr>`).join('')}</tbody></table></div><div id="serr"></div>`;
+  $('#pane').querySelectorAll('[data-role]').forEach(s=>s.onchange=async()=>{const {error}=await sb.from('fq_staff').update({role:s.value}).eq('user_id',s.dataset.role);if(error)return $('#serr').innerHTML=`<div class="msg err">${esc(error.message)}</div>`;await loadAll();adminShell()});
+  $('#pane').querySelectorAll('[data-rm]').forEach(b=>b.onclick=async()=>{if(b.dataset.sure!=='1'){b.dataset.sure='1';b.textContent='Click again to confirm';return}const {error}=await sb.from('fq_staff').delete().eq('user_id',b.dataset.rm);if(error)return $('#serr').innerHTML=`<div class="msg err">${esc(error.message)}</div>`;await loadAll();adminShell()});}
+function paneLog(){
+  const name=id=>{const t=A.staff.find(s=>s.user_id===id);return t?t.email:(id===A.me.user_id?A.me.email:'staff')};
+  $('#pane').innerHTML=`<div class="scroll"><table class="tbl"><thead><tr><th>When</th><th>Who</th><th>What</th></tr></thead><tbody>${A.events.map(e=>{const d=e.detail||{};const what=e.action==='delete'?`Deleted ${d.car||''} (${d.ref||''})`:`Status ${LBL[d.status_from]||d.status_from} → ${LBL[d.status_to]||d.status_to}${d.offer_to!=null?`, offer ${kes(d.offer_to)}`:''}`;return`<tr><td>${esc(when(e.created_at))}</td><td>${esc(name(e.actor))}</td><td>${esc(what)}</td></tr>`}).join('')||'<tr><td colspan="3">No activity yet.</td></tr>'}</tbody></table></div>`;}
+
+route();
+</script>
+</body>
+</html>
