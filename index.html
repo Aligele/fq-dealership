@@ -407,8 +407,24 @@ async function save(id,u){
   if(error){const d=$('#derr');if(d)d.innerHTML=`<div class="msg err">${esc(error.message)}</div>`;return}
   await loadAll();adminShell();}
 function paneStaff(){
-  $('#pane').innerHTML=`<p class="sub" style="font-size:15px;margin-top:0">New staff create an account on the Staff login page, then appear here as <b>pending</b>. Give them the reviewer role (can approve, reject and edit) or admin (also manages staff).</p>
+  $('#pane').innerHTML=`<div class="card" style="margin-bottom:18px;box-shadow:0 1px 3px rgba(14,32,56,.1)"><h3 style="font-size:28px;margin-bottom:6px">Add staff</h3>
+<p class="sub" style="font-size:15px;margin:0 0 14px">Create a login for a new team member. Reviewers can approve, reject and edit submissions. Admins can also manage staff. Share the password with them yourself.</p>
+<form id="af" novalidate><div class="g"><div><label class="l" for="ae">Email</label><input class="fld" id="ae" type="email" autocomplete="off"></div>
+<div><label class="l" for="ap">Password <span class="opt">(8+ characters)</span></label><input class="fld" id="ap" type="text" autocomplete="off"></div>
+<div><label class="l" for="ar">Role</label><select class="fld" id="ar"><option value="reviewer">Reviewer</option><option value="admin">Admin</option></select></div></div>
+<div id="aerr"></div><button class="btn" type="submit">Add staff member</button></form></div>
+<p class="sub" style="font-size:15px;margin:0 0 12px">People who create their own account on the Staff login page appear below as <b>pending</b>. Set their role to let them in. Removing someone takes away their access to this dashboard.</p>
 <div class="scroll"><table class="tbl"><thead><tr><th>Email</th><th>Role</th><th>Joined</th><th></th></tr></thead><tbody>${A.staff.map(s=>`<tr><td>${esc(s.email)}${s.user_id===A.me.user_id?' (you)':''}</td><td>${s.user_id===A.me.user_id?esc(s.role):`<select class="fld" style="height:38px;width:auto" data-role="${s.user_id}">${['pending','reviewer','admin'].map(r=>`<option ${s.role===r?'selected':''}>${r}</option>`).join('')}</select>`}</td><td>${esc(when(s.created_at))}</td><td>${s.user_id===A.me.user_id?'':`<button class="link" data-rm="${s.user_id}">Remove</button>`}</td></tr>`).join('')}</tbody></table></div><div id="serr"></div>`;
+  $('#af').addEventListener('submit',async e=>{e.preventDefault();
+    const er=(m,ok)=>$('#aerr').innerHTML=`<div class="msg ${ok?'ok':'err'}" role="alert">${esc(m)}</div>`;
+    const email=$('#ae').value.trim(),password=$('#ap').value,role=$('#ar').value;
+    if(!/^\S+@\S+\.\S+$/.test(email))return er('Enter a valid email address.');
+    const {data,error}=await sb.functions.invoke('fq-add-staff',{body:{email,password,role}});
+    let msg=data&&data.error;
+    if(error&&!msg){try{msg=(await error.context.json()).error}catch(_){msg=error.message}}
+    if(msg)return er(msg);
+    await loadAll();adminShell();
+    const b=$('#pane');if(b)b.insertAdjacentHTML('afterbegin',`<div class="msg ok">${esc(email)} can now sign in as ${esc(role)}.${data.created?' Share the password with them.':' They already had a login, so their existing password still works.'}</div>`);});
   $('#pane').querySelectorAll('[data-role]').forEach(s=>s.onchange=async()=>{const {error}=await sb.from('fq_staff').update({role:s.value}).eq('user_id',s.dataset.role);if(error)return $('#serr').innerHTML=`<div class="msg err">${esc(error.message)}</div>`;await loadAll();adminShell()});
   $('#pane').querySelectorAll('[data-rm]').forEach(b=>b.onclick=async()=>{if(b.dataset.sure!=='1'){b.dataset.sure='1';b.textContent='Click again to confirm';return}const {error}=await sb.from('fq_staff').delete().eq('user_id',b.dataset.rm);if(error)return $('#serr').innerHTML=`<div class="msg err">${esc(error.message)}</div>`;await loadAll();adminShell()});}
 function paneLog(){
